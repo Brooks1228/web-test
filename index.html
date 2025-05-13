@@ -39,25 +39,21 @@
         socket.on("connect", () => {
           console.log("✅ connected with id:", socket.id);
 
-          // Request the last 20 messages from the server
           socket.emit("getLastMessages");
 
-          // Listen for the last messages from the server
           socket.on("lastMessages", (messages) => {
             const chats = document.getElementById("chats");
-            chats.innerHTML = ""; // Clear the chat list
+            chats.innerHTML = "";
             messages.forEach((msg) => {
               chats.innerHTML += `<li>${msg}</li>`;
             });
           });
         });
 
-        // Confetti event listener
         document.getElementById("confetti").addEventListener("click", () => {
-          socket.emit("triggerConfetti"); // Emit confetti event to the server
+          socket.emit("triggerConfetti");
         });
 
-        // Listen for confetti event from the server
         socket.on("playConfetti", () => {
           confetti({
             particleCount: 100,
