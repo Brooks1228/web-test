@@ -20,7 +20,7 @@
       script.src = "https://cdn.socket.io/4.7.2/socket.io.min.js";
       script.onload = () => {
         // 2. Connect to your deployed server
-        const socket = io("http://localhost:3000"); // Replace with your server URL
+        const socket = io("https://chat-app-server-kc0e.onrender.com"); // Replace with your server URL
 
         // 3. Listen for messages
         socket.on("message", (msg) => {
